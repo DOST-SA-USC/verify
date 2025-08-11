@@ -4,7 +4,6 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
@@ -12,16 +11,19 @@ import {
 export default async function Home() {
   return (
     <Card className="w-sm">
-      <CardHeader>
-        <CardTitle>Card Title</CardTitle>
-        <CardDescription>Card Description</CardDescription>
+      <CardHeader className="h-full w-full p-0 text-center">
+        <CardTitle className="text-xl font-bold">Verify Scholar</CardTitle>
+        <CardDescription>
+          A tool to verify a DOST SA USC scholar.
+        </CardDescription>
       </CardHeader>
-      <CardContent>
-        <p>Card Content</p>
+      <CardContent className="text-justify">
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti
+          sapiente numquam ullam modi. Accusamus cum labore dolorem perspiciatis
+          culpa sequi!
+        </p>
       </CardContent>
-      <CardFooter>
-        <p>Card Footer</p>
-      </CardFooter>
     </Card>
   );
 }

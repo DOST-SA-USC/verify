@@ -1,7 +1,21 @@
-export function formatPhoneNumber(phone: string): string {
-  const cleaned = phone.replace(/\D/g, '');
-  if (cleaned.length === 11 && cleaned.startsWith('09')) {
-    return `${cleaned.slice(0, 4)}-${cleaned.slice(4, 7)}-${cleaned.slice(7)}`;
-  }
-  return phone;
+export function getInitials(name: string): string {
+  if (!name) return '';
+  return name
+    .split(' ')
+    .filter(Boolean)
+    .map((word) => word[0].toUpperCase())
+    .join('');
+}
+
+export function formatFullName(
+  first: string,
+  middle: string,
+  last: string
+): string {
+  const middleInitial = middle ? `${middle[0].toUpperCase()}.` : '';
+  return [first, middleInitial, last]
+    .filter(Boolean)
+    .join(' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
