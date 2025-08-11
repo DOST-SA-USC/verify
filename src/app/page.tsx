@@ -11,7 +11,7 @@ import {
 
 export default async function Home() {
   return (
-    <Card>
+    <Card className="w-sm">
       <CardHeader>
         <CardTitle>Card Title</CardTitle>
         <CardDescription>Card Description</CardDescription>
