@@ -17,7 +17,7 @@ const Invalid = (props: { id: string }) => {
           A tool to verify a DOST SA USC scholar.
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex h-full w-full flex-col items-center justify-center gap-2 p-0">
+      <CardContent className="flex h-full w-full flex-col items-center justify-center gap-4 p-0">
         <ShieldX className="text-destructive size-40" />
         <div className="text-center text-base">
           <p>

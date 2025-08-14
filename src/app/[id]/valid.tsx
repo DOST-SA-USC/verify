@@ -72,7 +72,8 @@ const Valid = (props: { data: UserType }) => {
           {props.data.program} - {props.data.yearLevel}
         </h2>
         <p className="text-muted-foreground mb-4 text-center text-xs">
-          This scholar is verified and is eligible for DOST-SEI benefits.
+          Ensure the address starts with <u>verify.dostsausc.org</u> — otherwise
+          it&apos;s fraudulent.
         </p>
       </div>
     </CardContent>
