@@ -3,6 +3,7 @@ interface UserType {
   firstName: string;
   middleName: string;
   lastName: string;
+  suffix: string | undefined;
   image: string;
   program: string;
   yearLevel: string;

@@ -10,12 +10,12 @@ export function getInitials(name: string): string {
 export function formatFullName(
   first: string,
   middle: string,
-  last: string
+  last: string,
+  suffix?: string
 ): string {
   const middleInitial = middle ? `${middle[0].toUpperCase()}.` : '';
-  return [first, middleInitial, last]
-    .filter(Boolean)
-    .join(' ')
-    .replace(/\s+/g, ' ')
-    .trim();
+  const nameParts = [first, middleInitial, last].filter(Boolean).join(' ');
+  return suffix
+    ? `${nameParts}, ${suffix}`.replace(/\s+/g, ' ').trim()
+    : nameParts.replace(/\s+/g, ' ').trim();
 }

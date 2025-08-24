@@ -39,7 +39,8 @@ const Valid = (props: { data: UserType }) => {
               {formatFullName(
                 props.data.firstName,
                 props.data.middleName,
-                props.data.lastName
+                props.data.lastName,
+                props.data.suffix
               )}
             </h1>
 

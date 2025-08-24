@@ -39,6 +39,7 @@ export default async function Page({
               yearLevel: data.yearLevel,
               yearOfAward: data.yearOfAward,
               scholarshipType: data.scholarshipType,
+              suffix: data.suffix,
             } as UserType
           }
         />
