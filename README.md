@@ -2,8 +2,8 @@
 
 # DOST SA USC
 
-- Official scholar portal for DOST SA USC.
+- A tool to verify DOST SA USC Scholars
 
 ## Tech Stack
 
-![Tech Stack](https://skills-icons.vercel.app/api/icons?i=nextjs,ts,tailwind,shadcnui,supabase,betterauth,drizzle,zustand)
+![Tech Stack](https://skills-icons.vercel.app/api/icons?i=nextjs,ts,tailwind,shadcnui)
