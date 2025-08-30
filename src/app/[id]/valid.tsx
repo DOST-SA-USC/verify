@@ -55,22 +55,28 @@ const Valid = (props: { data: UserType }) => {
           </div>
           <div className="space-x-2">
             <span className="text-muted-foreground">{props.data.uscID}</span>
-            <span className="text-muted-foreground inline-block align-middle text-lg font-bold">
-              •
-            </span>
-            <Badge variant="outline">
-              <Award />
-              {props.data.scholarshipType}
-            </Badge>
-            <Badge variant="outline">
-              <Calendar />
-              {props.data.yearOfAward}
-            </Badge>
+            {props.data.scholarshipType && props.data.yearOfAward && (
+              <>
+                <span className="text-muted-foreground inline-block align-middle text-lg font-bold">
+                  •
+                </span>
+                <Badge variant="outline">
+                  <Award />
+                  {props.data.scholarshipType}
+                </Badge>
+                <Badge variant="outline">
+                  <Calendar />
+                  {props.data.yearOfAward}
+                </Badge>
+              </>
+            )}
           </div>
         </div>
 
         <h2 className="bg-primary text-primary-foreground mt-4 flex h-10 w-full items-center justify-center rounded-lg font-extrabold">
-          {props.data.program} - {props.data.yearLevel}
+          {props.data.program && props.data.yearLevel
+            ? `${props.data.program} - ${props.data.yearLevel}`
+            : 'DOST SA USC STAFF'}
         </h2>
         <p className="text-muted-foreground mb-4 text-center text-xs">
           Ensure the address starts with <u>verify.dostsausc.org</u> — otherwise
