@@ -28,7 +28,7 @@ export default async function Home() {
       <CardContent className="px-8 py-0">
         <div className="flex items-center">
           <div className="bg-border h-px flex-1" />
-          <div className="bg-primary/10 text-primary mx-3 flex size-8 items-center justify-center rounded-full border border-primary/30">
+          <div className="bg-primary/10 text-primary border-primary/30 mx-3 flex size-8 items-center justify-center rounded-full border">
             <ShieldCheck className="size-4" />
           </div>
           <div className="bg-border h-px flex-1" />

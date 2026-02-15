@@ -4,7 +4,7 @@
 
 - Method: `GET`
 - URL: `https://tracker.dostsausc.org/api/scholar/{id}`
-- Consumer file: `src/app/[id]/page.tsx`
+- Consumer files: `src/app/[id]/page.tsx`, `src/lib/scholar.ts`
 
 The app calls this endpoint server-side with:
 
@@ -12,12 +12,27 @@ The app calls this endpoint server-side with:
 Authorization: Bearer <DSU_API_KEY>
 ```
 
+`id` is validated and normalized before request:
+
+- Allowed characters: letters, numbers, `_`, `-`
+- Maximum length: 64
+- Invalid IDs are rejected without an upstream call
+
 `id` is URL-encoded before interpolation.
+
+## Runtime Guards
+
+- `DSU_API_KEY` must be set, otherwise verification returns `service_unavailable`.
+- Upstream request uses timeout: `5000ms`.
+- Network and parsing failures are caught and mapped to safe failure responses.
+- Upstream JSON is runtime-validated before rendering.
 
 ## Response Handling
 
-- If `response.ok === true`, the body is parsed as JSON and rendered with `Valid`.
-- For any non-OK response, the app renders `Invalid` and shows the queried ID.
+- `200 OK` + valid payload -> `success`, rendered by `Valid`.
+- `404` -> `not_found`, rendered by `Invalid`.
+- Invalid route ID input -> `invalid_id`, rendered by `Invalid`.
+- Any other non-OK, timeout, config, or payload-shape issue -> `service_unavailable`, rendered by `Invalid`.
 
 ## Expected Scholar Payload
 
@@ -40,7 +55,7 @@ interface UserType {
 
 ## Caching Behavior
 
-Next.js request options in `src/app/[id]/page.tsx`:
+Next.js request options in `src/lib/scholar.ts`:
 
 - Revalidate interval: `300` seconds
 - Tag: `scholar:{id}`

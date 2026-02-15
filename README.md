@@ -24,8 +24,10 @@ Local app URL: `http://localhost:3000`
 
 ## Environment Variables
 
-- `DSU_API_KEY`: Bearer token used by the server route in `src/app/[id]/page.tsx`
+- `DSU_API_KEY`: required Bearer token used by scholar lookup in `src/lib/scholar.ts`
 - `NEXT_PUBLIC_BASE_URL`: reserved in `.env.local.example` (currently unused in source)
+
+If `DSU_API_KEY` is missing, verification returns a controlled unavailable state.
 
 ## Scripts
 

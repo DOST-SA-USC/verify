@@ -14,10 +14,10 @@ cp .env.local.example .env.local
 
 Populate `.env.local`:
 
-| Variable | Required | Description |
-| --- | --- | --- |
-| `DSU_API_KEY` | yes | Bearer token for `tracker.dostsausc.org` scholar endpoint |
-| `NEXT_PUBLIC_BASE_URL` | no (current code) | Present in env example; currently unused in source |
+| Variable               | Required          | Description                                                                                |
+| ---------------------- | ----------------- | ------------------------------------------------------------------------------------------ |
+| `DSU_API_KEY`          | yes               | Bearer token for `tracker.dostsausc.org` scholar endpoint (required for live verification) |
+| `NEXT_PUBLIC_BASE_URL` | no (current code) | Present in env example; currently unused in source                                         |
 
 ## Run
 
@@ -29,25 +29,25 @@ Default local URL: `http://localhost:3000`
 
 ## Scripts
 
-| Script | Command | Purpose |
-| --- | --- | --- |
-| Dev server | `bun run dev` | Start Next.js with Turbopack |
-| Build | `bun run build` | Production build |
-| Start | `bun run start` | Serve built output |
-| Lint | `bun run lint` | ESLint checks |
-| Format | `bun run format` | Prettier write |
-| Format check | `bun run format:check` | Prettier validation |
+| Script       | Command                | Purpose                      |
+| ------------ | ---------------------- | ---------------------------- |
+| Dev server   | `bun run dev`          | Start Next.js with Turbopack |
+| Build        | `bun run build`        | Production build             |
+| Start        | `bun run start`        | Serve built output           |
+| Lint         | `bun run lint`         | ESLint checks                |
+| Format       | `bun run format`       | Prettier write               |
+| Format check | `bun run format:check` | Prettier validation          |
 
 ## Project Layout
 
-| Path | Role |
-| --- | --- |
-| `src/app` | App Router routes and route-level UI |
-| `src/components/ui` | Reusable UI primitives |
-| `src/components/loading.tsx` | Shared loading view |
-| `src/lib` | Utility and formatting helpers |
-| `src/styles/globals.css` | Global Tailwind and design tokens |
-| `.github/workflows/deploy.yml` | Main deployment pipeline |
+| Path                           | Role                                                   |
+| ------------------------------ | ------------------------------------------------------ |
+| `src/app`                      | App Router routes and route-level UI                   |
+| `src/components/ui`            | Reusable UI primitives                                 |
+| `src/components/loading.tsx`   | Shared loading view                                    |
+| `src/lib`                      | Utility helpers plus scholar lookup/validation service |
+| `src/styles/globals.css`       | Global Tailwind and design tokens                      |
+| `.github/workflows/deploy.yml` | Main deployment pipeline                               |
 
 ## Verification Checklist Before PR
 
@@ -56,9 +56,10 @@ Default local URL: `http://localhost:3000`
 3. Confirm `/:id` handles valid and invalid IDs.
 4. Confirm no secrets are hardcoded.
 5. Confirm environment changes are reflected in `.env.local.example`.
+6. Confirm verification failures return safe UI states (invalid ID, not found, service unavailable).
 
 ## Current Gaps
 
 - No automated tests are present yet.
 - `NEXT_PUBLIC_BASE_URL` is declared but not used in current source files.
-- `components.json` points to `src/globals.css`, but the stylesheet lives at `src/styles/globals.css`.
+- Repository-level `bun run format:check` is not yet clean across all files.

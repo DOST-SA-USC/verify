@@ -13,5 +13,7 @@ This folder contains project docs generated from the current codebase state.
 
 - App entry route: `src/app/page.tsx`
 - Verification route: `src/app/[id]/page.tsx`
+- Verification service: `src/lib/scholar.ts`
 - Global styles: `src/styles/globals.css`
+- Security headers: `next.config.ts`
 - Deploy workflow: `.github/workflows/deploy.yml`

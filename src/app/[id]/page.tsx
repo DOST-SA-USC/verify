@@ -1,10 +1,8 @@
 import { Card } from '@/components/ui/card';
+import { fetchScholarById } from '@/lib/scholar';
 
 import Invalid from './invalid';
 import Valid from './valid';
-import { UserType } from '@/type';
-
-const CACHE_REVALIDATE_SECONDS = 300;
 
 export default async function Page({
   params,
@@ -12,46 +10,14 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-
-  const res = await fetch(
-    `https://tracker.dostsausc.org/api/scholar/${encodeURIComponent(id)}`,
-    {
-      headers: {
-        authorization: `Bearer ${process.env.DSU_API_KEY}`,
-      },
-      next: {
-        revalidate: CACHE_REVALIDATE_SECONDS,
-        tags: [`scholar:${id}`],
-      },
-    }
-  );
-
-  let data: UserType | null = null;
-  if (res.ok) {
-    data = await res.json();
-  }
+  const result = await fetchScholarById(id);
 
   return (
     <Card className="h-full w-sm gap-0 p-0 px-0 md:w-md">
-      {res.ok && data ? (
-        <Valid
-          data={
-            {
-              uscID: data.uscID,
-              firstName: data.firstName,
-              middleName: data.middleName,
-              lastName: data.lastName,
-              image: data.image,
-              program: data.program,
-              yearLevel: data.yearLevel,
-              yearOfAward: data.yearOfAward,
-              scholarshipType: data.scholarshipType,
-              suffix: data.suffix,
-            } as UserType
-          }
-        />
+      {result.kind === 'success' ? (
+        <Valid data={result.data} />
       ) : (
-        <Invalid id={id} />
+        <Invalid id={result.displayId} reason={result.reason} />
       )}
     </Card>
   );
