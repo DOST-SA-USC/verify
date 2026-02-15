@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="font-secondary bg-background antialiased">
-        <div className="flex min-h-svh flex-col items-center justify-center bg-[url('/pattern.png')] bg-[length:160px_160px] bg-repeat md:bg-[length:180px_180px] lg:bg-[length:200px_200px]">
+        <div className="app-grid-bg flex min-h-svh flex-col items-center justify-center">
           {children}
         </div>
       </body>

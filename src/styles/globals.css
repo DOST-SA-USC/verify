@@ -117,6 +117,31 @@ body {
   letter-spacing: var(--tracking-normal);
 }
 
+.app-grid-bg {
+  --grid-size: 28px;
+  --grid-line-color: color-mix(in oklab, var(--primary) 8%, transparent);
+  background-color: var(--background);
+  background-image:
+    linear-gradient(to right, var(--grid-line-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line-color) 1px, transparent 1px);
+  background-size:
+    var(--grid-size) var(--grid-size),
+    var(--grid-size) var(--grid-size);
+  background-position: center, center;
+}
+
+@media (min-width: 768px) {
+  .app-grid-bg {
+    --grid-size: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .app-grid-bg {
+    --grid-size: 36px;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
