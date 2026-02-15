@@ -1,10 +1,10 @@
-import React from 'react';
-
 import { Card } from '@/components/ui/card';
 
 import Invalid from './invalid';
 import Valid from './valid';
 import { UserType } from '@/type';
+
+const CACHE_REVALIDATE_SECONDS = 300;
 
 export default async function Page({
   params,
@@ -13,11 +13,18 @@ export default async function Page({
 }) {
   const { id } = await params;
 
-  const res = await fetch(`https://tracker.dostsausc.org/api/scholar/${id}`, {
-    headers: {
-      authorization: `Bearer ${process.env.DSU_API_KEY}`,
-    },
-  });
+  const res = await fetch(
+    `https://tracker.dostsausc.org/api/scholar/${encodeURIComponent(id)}`,
+    {
+      headers: {
+        authorization: `Bearer ${process.env.DSU_API_KEY}`,
+      },
+      next: {
+        revalidate: CACHE_REVALIDATE_SECONDS,
+        tags: [`scholar:${id}`],
+      },
+    }
+  );
 
   let data: UserType | null = null;
   if (res.ok) {
