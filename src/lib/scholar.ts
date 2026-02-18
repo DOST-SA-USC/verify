@@ -1,6 +1,6 @@
 import type { UserType } from '@/type';
 
-const SCHOLAR_ENDPOINT_BASE = 'https://tracker.dostsausc.org/api/scholar';
+const SCHOLAR_ENDPOINT_BASE = 'https://dostsausc.org/api/scholar';
 const SCHOLAR_ID_PATTERN = /^[A-Za-z0-9_-]{1,64}$/;
 const CACHE_REVALIDATE_SECONDS = 300;
 const REQUEST_TIMEOUT_MS = 5000;
